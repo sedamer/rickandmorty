@@ -5,11 +5,16 @@ import { useEffect, useState } from "react";
 
 import Cards from "./components/Cards/cards";
 import Filters from "./components/Filters/filters";
+import Pagination from "./components/Pagination/pagination";
+import Search from "./components/Search/search";
 
 function App() {
   let [pageNumber, setPageNumber] = useState(1); //state tanımlama
   let [fetchData, updateFetchData] = useState([]);
-  let api = `https://rickandmortyapi.com/api/character?page=${pageNumber}`; // dinamik oluşturulan API URLsi
+  const [search, setSearch] = useState("");
+  let api = `https://rickandmortyapi.com/api/character?page=${pageNumber}&name=${search}`;
+
+  // dinamik oluşturulan API URLsi
   let { info, results } = fetchData;
   console.log(results);
   // use Effect bileşen her render edildiğinde side effectsleri yönetmek için kullanılır.
@@ -33,6 +38,9 @@ function App() {
           Rick & Morty <span className="badge bg-secondary">Wiki</span>
         </h1>
       </div>
+      <div>
+        <Search setPageNumber={setPageNumber} setSearch={setSearch} />
+      </div>
       <div className="container">
         <div className="row">
           <div className="col-3">
@@ -40,10 +48,13 @@ function App() {
           </div>
           <div className="col-8">
             <div className="row">
-              <Cards />
+              <Cards results={results} />
             </div>
           </div>
         </div>
+      </div>
+      <div>
+        <Pagination info={info} setPageNumber={setPageNumber} />
       </div>
     </div>
   );
