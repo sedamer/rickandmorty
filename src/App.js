@@ -13,8 +13,10 @@ function App() {
   let [fetchData, updateFetchData] = useState([]);
   const [search, setSearch] = useState("");
   const [status, setStatus] = useState("");
+  const [gender, setGender] = useState("");
+  const [species, setSpecies] = useState("");
 
-  let api = `https://rickandmortyapi.com/api/character?page=${pageNumber}&name=${search}&status=${status}`;
+  let api = `https://rickandmortyapi.com/api/character?page=${pageNumber}&name=${search}&status=${status}&gender=${gender}&species=${species}`;
 
   // dinamik oluşturulan API URLsi
   let { info, results } = fetchData;
@@ -46,7 +48,12 @@ function App() {
       <div className="container">
         <div className="row">
           <div className="col-3">
-            <Filters setStatus={setStatus} setPageNumber={setPageNumber} />
+            <Filters
+              setStatus={setStatus}
+              setPageNumber={setPageNumber}
+              setGender={setGender}
+              setSpecies={setSpecies}
+            />
           </div>
           <div className="col-8">
             <div className="row">

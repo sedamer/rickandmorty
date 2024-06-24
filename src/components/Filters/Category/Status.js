@@ -1,8 +1,8 @@
-import FilterButton from "./FilterButton";
+import FilterButton from "../FilterButton";
 import React from "react";
 
 const status = ({ setPageNumber, setStatus }) => {
-  let status = ["alive", "dead", "unknown"];
+  let status = ["Alive", "Dead", "Unknown"];
   return (
     <div class="accordion-item">
       <h2 class="accordion-header">
@@ -25,8 +25,8 @@ const status = ({ setPageNumber, setStatus }) => {
         <div class="accordion-body d-flex flex-wrap gap-2">
           {status.map((items, index) => (
             <FilterButton
-              setPageNumber={setPageNumber}
               value={setStatus}
+              setPageNumber={setPageNumber}
               key={index}
               items={items}
               name="status"

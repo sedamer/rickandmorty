@@ -5,19 +5,16 @@ const FilterButton = ({ name, index, items, setPageNumber, value }) => {
     <div>
       <div className="form-check">
         <input
+          onClick={() => {
+            value(items);
+            setPageNumber(1);
+          }}
           className="form-check-input"
           type="radio"
           name={name}
           id={`${name}-${index}`}
         />
-        <label
-          onClick={() => {
-            value = { items };
-            setPageNumber(1);
-          }}
-          className="btn btn-outline-primary"
-          for={`${name}-${index}`}
-        >
+        <label className="btn btn-outline-primary" for={`${name}-${index}`}>
           {items}
         </label>
       </div>

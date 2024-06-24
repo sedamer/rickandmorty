@@ -1,7 +1,7 @@
-import FilterButton from "./FilterButton";
+import FilterButton from "../FilterButton";
 import React from "react";
 
-const gender = () => {
+const gender = ({ setPageNumber, setGender }) => {
   let gender = ["female", "male", "genderless", "unknown"];
   return (
     <div class="accordion-item">
@@ -25,7 +25,10 @@ const gender = () => {
         <div class="accordion-body d-flex flex-wrap gap-2">
           {gender.map((items, index) => (
             <FilterButton
+              value={setGender}
               key={index}
+              setPageNumber={setPageNumber}
+              setGender={setGender}
               items={items}
               name="gender"
               index={index}
